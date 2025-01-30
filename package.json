@@ -1,0 +1,30 @@
+{
+  "name": "freelancer",
+  "version": "1.0.0",
+  "description": "\"# Freelancer\"",
+  "main": "app.js",
+  "scripts": {
+      "start": "nodemon app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omercanhocaoglu/Freelancer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/omercanhocaoglu/Freelancer/issues"
+  },
+  "homepage": "https://github.com/omercanhocaoglu/Freelancer#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.19.1",
+    "express-fileupload": "^1.2.1",
+    "method-override": "^3.0.0",
+    "mongodb": "^3.7.4",
+    "mongoose": "^5.12.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
