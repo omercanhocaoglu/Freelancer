@@ -2,6 +2,8 @@ const express = require('express');
 const ejs = require('ejs');
 const path = require('path');
 const app = express();
+const mongoose = require('mongoose');
+const Photo = require('./models/Photo');
 
 // Template engine
 app.set("view engine", "ejs");
@@ -11,15 +13,25 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// connect DB
+mongoose.connect('mongodb://localhost/freelancer-test-db',{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
+
 // Pages
-app.get( "/", ( req, res ) => {
-    res.render('index');
+app.get('/', async ( req, res ) => {
+    const photos = await Photo.find({});
+    res.render('index', {
+        photos
+    });
 });
 app.get("/add", (req, res) => {
     res.render('add');
 });
-app.post('/photos', ( req, res ) => {
-    console.log(req.body);
+app.post('/photos', async ( req, res ) => {
+    // console.log(req.body);
+    await Photo.create(req.body);
     res.redirect('/');
 });
 
