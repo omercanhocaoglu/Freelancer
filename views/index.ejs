@@ -16,10 +16,10 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
+                <div class="row">
                     <!-- Portfolio Item 1-->
                     <% for (let i = 0; i < photos.length; i++) { %>
-                    <div class="col-md-6 col-lg-4 mb-5">
+                    <div class="col-md-6 col-lg-4 mb-5 float-start">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
                             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white">
@@ -27,7 +27,7 @@
                                 </div>
                             </div>
                             <a href="/photos/<%= photos[i]._id %>">
-                                <img class="img-fluid" src="https://images.unsplash.com/photo-1737741276705-569ebd946f5b?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="..." />
+                                <img class="img-fluid" src="<%= photos[i].image %>" alt="..." />
                             </a>
                             <h5> <%= photos[i].title %> </h5>
                             <p> <%= photos[i].description %> </p>
