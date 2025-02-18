@@ -29,8 +29,8 @@
                             <a href="/photos/<%= photos[i]._id %>">
                                 <img class="img-fluid" src="<%= photos[i].image %>" alt="..." />
                             </a>
-                            <h5> <%= photos[i].title %> </h5>
-                            <p> <%= photos[i].description %> </p>
+                            <h5> <%= photos[i].title.substring(0,40) %> </h5>
+                            <p> <%= photos[i].description.substring(0,80) %>... </p>
                         </div>
                     </div>
                     <% } %>

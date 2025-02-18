@@ -19,10 +19,12 @@
                                             <i class="fas fa-xmark me-1"></i>
                                             Edit Project
                                         </a>
-                                        <button class="btn btn-dark btn-xl text-uppercase" data-bs-dismiss="" type="button">
+                                        <a href="/photos/<%= photo._id %>?_method=DELETE" type="button"
+                                             class="btn btn-dark btn-xl text-uppercase" data-bs-dismiss=""
+                                             onclick="return confirm('Are you sure?')">
                                             <i class="fas fa-xmark me-1"></i>
                                             Delete Project
-                                        </button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
