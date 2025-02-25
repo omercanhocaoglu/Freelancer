@@ -34,9 +34,9 @@ app.get("/add", PhotoControllers.getAddPhoto);
 app.get('/photos/:id', PhotoControllers.getSinglePhoto);
 app.get('/photos/edit/:id', PhotoControllers.getEditPhoto);
 app.post('/photos', PhotoControllers.getUploadPhoto);
-// EDIT
+// Edit
 app.put('/photos/:id', PhotoControllers.getEditedPhoto);
-// DELETE
+// Delete
 app.delete('/photos/:id', PhotoControllers.getDeletePhoto);
 
 const port = 3000;
