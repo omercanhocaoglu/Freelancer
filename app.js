@@ -22,10 +22,14 @@ app.use(methodOverride('_method', {
 }));
 
 // connect DB
-mongoose.connect('mongodb://localhost/freelancer-test-db',{
+mongoose.connect('mongodb+srv://omercanhocaoglu:NV8VnLfeDkGdcI15@cluster0.p4i36.mongodb.net/',{
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false
+}).then( () => {
+    console.log('DB connected!')
+} ).catch((err) => {
+    console.log(err)
 });
 
 // Pages
@@ -39,7 +43,7 @@ app.put('/photos/:id', PhotoControllers.getEditedPhoto);
 // Delete
 app.delete('/photos/:id', PhotoControllers.getDeletePhoto);
 
-const port = 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
     console.log(`Sunucu port ${port}'de çalışmaya başladı.`)
 });
