@@ -5,6 +5,9 @@ const app = express();
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload');
 const methodOverride = require('method-override');
+const flash = require('connect-flash');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const fs = require('fs');
 const Photo = require('./models/Photo');
 const PhotoControllers = require('./controllers/PhotoControllers');
@@ -17,6 +20,17 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(fileUpload());
+app.use(session({
+    secret: 'my_keyboard_cat',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/freelancer-test-db' })
+  }));
+app.use(flash());
+app.use(( req, res, next ) => {
+    res.locals.flashMessages = req.flash();
+    next();
+});
 app.use(methodOverride('_method', {
     methods: ['POST', 'GET']
 }));
@@ -35,6 +49,8 @@ mongoose.connect('mongodb+srv://omercanhocaoglu:NV8VnLfeDkGdcI15@cluster0.p4i36.
 // Pages
 app.get('/', PhotoControllers.getAllPhotos);
 app.get("/add", PhotoControllers.getAddPhoto);
+app.get("/contact", PhotoControllers.getContact);
+app.post("/contact", PhotoControllers.sendEmail);
 app.get('/photos/:id', PhotoControllers.getSinglePhoto);
 app.get('/photos/edit/:id', PhotoControllers.getEditPhoto);
 app.post('/photos', PhotoControllers.getUploadPhoto);
